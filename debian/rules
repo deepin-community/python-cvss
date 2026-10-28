@@ -1,4 +1,23 @@
 #!/usr/bin/make -f
 
+export PYBUILD_NAME=cvss
+export PYBUILD_TEST_TOX=1
+include /usr/share/dpkg/pkg-info.mk
+
 %:
-	dh $@
+	dh $@ --buildsystem=pybuild
+
+override_dh_installman:
+	PYTHONPATH=. \
+	help2man \
+		--version-string='$(DEB_VERSION_UPSTREAM)' \
+		--name 'calculate Common Vulnerability Scoring System (CVSS) metrics' \
+		--no-info \
+		--no-discard-stderr \
+		'python3 cvss/cvss_calculator.py' | sed 's/.PY//;s/.py//' \
+		> debian/cvss_calculator.1
+	dh_installman
+
+override_dh_auto_clean:
+	dh_auto_clean
+	rm -f debian/cvss_calculator.1
