@@ -1,5 +1,16 @@
-template-repository (1.0-1) unstable; urgency=medium
+python-cvss (3.6-1) unstable; urgency=medium
 
-  * Initial release
+  * New upstream release: v3.6
+  * d/control: Update description same as upstream
+  * d/copyright: Add missing license info for tests/schemas/*
+  * d/rules: remove static manpage from debian/ generated using h2m
+  * Remove d/tests directory as it is redundant to tests running during
+    build time
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Nishit Majithia <nishit.nm@gmail.com>  Thu, 04 Sep 2025 22:47:26 +0530
+
+python-cvss (3.4-1) unstable; urgency=medium
+
+  * Initial release of v3.4. (Closes: #1108637)
+
+ -- Nishit Majithia <nishit.nm@gmail.com>  Sun, 22 Jun 2025 15:39:47 +0000
